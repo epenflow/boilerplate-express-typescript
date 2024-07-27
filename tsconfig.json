@@ -4,7 +4,16 @@
 		"module": "CommonJS",
 		"outDir": "./dist",
 		"strict": true,
-		"esModuleInterop": true
+		"esModuleInterop": true,
+
+		/* Plugin configurations*/
+		"plugins": [
+			{
+				"name": "gql.tada/ts-plugin",
+				"schema": "./schema.graphql",
+				"tadaOutputLocation": "./src/graphql-env.d.ts"
+			}
+		]
 	},
 	"include": ["src/**/*.ts"]
 }
