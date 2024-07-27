@@ -1,15 +1,24 @@
 import { Router } from 'express';
 import RouteGroup from 'express-route-grouping';
-const apiRoute = new RouteGroup('/api', Router());
-
-apiRoute.group('/api', (api) => {
-	api.resource({
+const route = new RouteGroup('/', Router());
+/** products route */
+route.group('products', (product) => {
+	product.resource({
 		handlers: {
-			/** GET : /api */
 			index(req, res) {
-				res.send('GET : /api');
+				res.send('GET: /products');
 			},
 		},
 	});
 });
-export default apiRoute;
+/** items route */
+route.group('items', (items) => {
+	items.resource({
+		handlers: {
+			index(req, res) {
+				res.send('GET: /items');
+			},
+		},
+	});
+});
+export default route;

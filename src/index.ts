@@ -1,12 +1,16 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
 import dotenv from 'dotenv';
-dotenv.config();
-const app = express();
-const port = process.env.PORT;
-app.get('/', (req: Request, res: Response) => {
-	res.send('Hello world');
-});
+import route from './routes/api';
 
+dotenv.config();
+/** express */
+const app = express();
+
+/** port */
+const port = process.env.PORT;
+
+/** express */
+app.use('/api', route.export());
 app.listen(port, () => {
 	console.log(`Server running on http://localhost:${port}`);
 });
